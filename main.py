@@ -23,7 +23,7 @@ async def on_message(msg):
     resp = requests.get("http://dataservice.accuweather.com/forecasts/v1/hourly/1hour/193826?apikey=2A7yNWDokHDYBNQuyRJVYvgrdeg58flk%20&language=en-us&details=true&metric=true")
     await msg.channel.send(resp.json()[0]['RainProbability'])
     await msg.channel.send(" - Rain probability")
-  if msg.content.startswith("$cowin")
-    resp1 = requests.get("https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByPin?pincode=689648&date=21-05-2021")
-    await msg.channel.send(resp.json())
+  if msg.content.startswith("$cowin"):
+    resp1 = requests.get("https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByDistrict?district_id=300&date=20-05-2021")
+    await msg.channel.send(resp1.json())
 client.run('ODQzNDg1NTMzNDM4MzQ1MjU2.YKEjHg.ZMKOETN9UbGrGVn3u7V7Ynssrgs')
