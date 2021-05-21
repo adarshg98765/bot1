@@ -1,4 +1,5 @@
 import discord
+import time
 from bs4 import BeautifulSoup
 import requests
 url = "https://www.cricbuzz.com/cricket-match/live-scores"
@@ -37,5 +38,6 @@ async def on_message(msg):
 
     for x in data:
       await msg.channel.send(x)
-    
+  time.sleep(5)
+  return on_message(msg)
 client.run('ODQzNDg1NTMzNDM4MzQ1MjU2.YKEjHg.C78_Lw3NknbU4boPB90gkQuDFgI')
