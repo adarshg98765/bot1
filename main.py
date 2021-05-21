@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 from discord import state
 import requests
 from dotenv import load_dotenv
-load_dotenv(.env)
+load_dotenv(".env")
 url = "https://www.cricbuzz.com/cricket-match/live-scores"
 req = requests.get(url)
 soup = BeautifulSoup(req.text, "html.parser")
