@@ -25,6 +25,16 @@ async def on_message(msg):
     resp = requests.get("http://dataservice.accuweather.com/forecasts/v1/hourly/1hour/193826?apikey=2A7yNWDokHDYBNQuyRJVYvgrdeg58flk%20&language=en-us&details=true&metric=true")
     await msg.channel.send(resp.json()[0]['RainProbability'])
     await msg.channel.send(" - Rain probability")
+  if msg.content.startswith("$sc"):
+    sc = msg.content[3:]
+    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.76 Safari/537.36'}
+    url2 = "https://cdn-api.co-vin.in/api/v2/admin/location/districts/{}".format(sc)
+    resp2 = requests.get(url2, headers=headers)
+    data2 = resp2.json()['districts']
+    await msg.channel.send("district codes acording to state you selected ")
+    for d in data2:
+      await msg.channel.send(d)
+    await msg.channel.send("enter in following format : '$cowin disctrict_code date_dd-mm-yyyy'")
   if msg.content.startswith("$cowin"):
     headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.76 Safari/537.36'}
     if len(msg.content) == 6:
@@ -34,16 +44,8 @@ async def on_message(msg):
       data3 = resp3.json()['states']
       for states in data3:
         await msg.channel.send(states)
-      await msg.channel.send("Enter your state code")
-      async def on_message(msg1):
-        sc = msg1.content
-        url2 = "https://cdn-api.co-vin.in/api/v2/admin/location/districts/{}".format(sc)
-        resp2 = requests.get(url2,headers=headers)
-        data2 = resp2.json()['districts']
-        await msg.channel.send("district codes acording to state you selected ")
-        for d in data2:
-          await msg.channel.send(d)
-        await msg.channel.send("enter in following format : '$cowin disctrict_code date_dd-mm-yyyy'")
+      await msg.channel.send("Enter your state code as $sc'statecode'")
+      
     dis = msg.content[7:10]
     date = msg.content[11:21]
     url1 = "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByDistrict?district_id={}&date={}".format(dis,date)
