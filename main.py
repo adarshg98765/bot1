@@ -54,5 +54,9 @@ async def on_message(msg):
     data = resp1.json()['sessions']
 
     for x in data:
-      await msg.channel.send(x)
+      c = x['available_capacity']
+      a = x['address']
+      if c>0:
+        await msg.channel.send(a)
+        await msg.channel.send("available dose : {}".format(c))
 client.run('ODQzNDg1NTMzNDM4MzQ1MjU2.YKEjHg.C78_Lw3NknbU4boPB90gkQuDFgI')
