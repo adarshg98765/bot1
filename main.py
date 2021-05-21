@@ -5,10 +5,7 @@ url = "https://www.cricbuzz.com/cricket-match/live-scores"
 req = requests.get(url)
 soup = BeautifulSoup(req.text, "html.parser")
 mydivs = soup.find_all(class_="cb-hmscg-bat-txt")
-url1 = "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByDistrict?district_id=300&date=21-05-2021"
-headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.76 Safari/537.36'}
-resp1 = requests.get(url1,headers=headers)
-data = resp1.json()['sessions']
+
 client = discord.Client()
 @client.event
 async def on_ready():
@@ -28,6 +25,10 @@ async def on_message(msg):
     await msg.channel.send(" - Rain probability")
     await msg.channel.send(resp.content)
   if msg.content.startswith("$cowin"):
+    url1 = "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByDistrict?district_id=300&date=21-05-2021"
+    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.76 Safari/537.36'}
+    resp1 = requests.get(url1,headers=headers)
+    data = resp1.json()['sessions']
     for x in data:
       await msg.channel.send(x)
     
