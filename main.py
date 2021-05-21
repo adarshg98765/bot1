@@ -26,12 +26,13 @@ async def on_message(msg):
     await msg.channel.send(" - Rain probability")
   if msg.content.startswith("$cowin"):
     headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.76 Safari/537.36'}
-    url2 = "https://cdn-api.co-vin.in/api/v2/admin/location/districts/17"
-    resp2 = requests.get(url2,headers=headers)
-    data2 = resp2.json()['districts']
-    await msg.channel.send("District codes are ")
-    for d in data2:
-      await msg.channel.send(d)
+    if len(msg.content) == 6:
+      url2 = "https://cdn-api.co-vin.in/api/v2/admin/location/districts/17"
+      resp2 = requests.get(url2,headers=headers)
+      data2 = resp2.json()['districts']
+      await msg.channel.send("District codes are ")
+      for d in data2:
+        await msg.channel.send(d)
     await msg.channel.send("enter in following format : '$cowin disctrict_code date_dd-mm-yyyy'")
     dis = msg.content[7:10]
     date = msg.content[11:21]
