@@ -1,4 +1,5 @@
 import discord
+import os
 import time
 from bs4 import BeautifulSoup
 from discord import state
@@ -59,4 +60,4 @@ async def on_message(msg):
       if c>0:
         await msg.channel.send(a)
         await msg.channel.send("available dose : {}".format(c))
-client.run('ODQzNDg1NTMzNDM4MzQ1MjU2.YKEjHg.C78_Lw3NknbU4boPB90gkQuDFgI')
+client.run(os.environ.get('token'))
