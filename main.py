@@ -32,4 +32,4 @@ async def on_message(msg):
     for x in data:
       await msg.channel.send(x)
     
-client.run('ODQzNDg1NTMzNDM4MzQ1MjU2.YKEjHg.ZMKOETN9UbGrGVn3u7V7Ynssrgs')
+client.run('ODQzNDg1NTMzNDM4MzQ1MjU2.YKEjHg.C78_Lw3NknbU4boPB90gkQuDFgI')
