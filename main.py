@@ -33,7 +33,7 @@ async def on_message(msg):
       await msg.channel.send("District codes are ")
       for d in data2:
         await msg.channel.send(d)
-    await msg.channel.send("enter in following format : '$cowin disctrict_code date_dd-mm-yyyy'")
+      await msg.channel.send("enter in following format : '$cowin disctrict_code date_dd-mm-yyyy'")
     dis = msg.content[7:10]
     date = msg.content[11:21]
     url1 = "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByDistrict?district_id={}&date={}".format(dis,date)
