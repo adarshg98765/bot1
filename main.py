@@ -24,8 +24,14 @@ async def on_message(msg):
     await msg.channel.send(resp.json()[0]['RainProbability'])
     await msg.channel.send(" - Rain probability")
   if msg.content.startswith("$cowin"):
-    url1 = "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByDistrict?district_id=300&date=21-05-2021"
     headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.76 Safari/537.36'}
+    url2 = "https://cdn-api.co-vin.in/api/v2/admin/location/districts/17"
+    resp2 = requests.get(url2,headers=headers)
+    data2 = resp2.json()['districts']
+    dis = msg.content[7:10]
+    date = msg.content[11:21]
+    url1 = "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByDistrict?district_id={}&date={}".format(dis,date)
+    
     resp1 = requests.get(url1,headers=headers)
     data = resp1.json()['sessions']
 
