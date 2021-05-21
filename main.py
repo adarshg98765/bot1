@@ -4,6 +4,8 @@ import time
 from bs4 import BeautifulSoup
 from discord import state
 import requests
+from dotenv import load_dotenv
+load_dotenv(.env)
 url = "https://www.cricbuzz.com/cricket-match/live-scores"
 req = requests.get(url)
 soup = BeautifulSoup(req.text, "html.parser")
@@ -60,4 +62,4 @@ async def on_message(msg):
       if c>0:
         await msg.channel.send(a)
         await msg.channel.send("available dose : {}".format(c))
-client.run(os.environ.get('token'))
+client.run(os.environ.getenv('token'))
