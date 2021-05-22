@@ -63,4 +63,3 @@ async def on_message(msg):
         await msg.channel.send(a)
         await msg.channel.send("available dose : {}".format(c))
 client.run(os.environ.get('token'))
-#hiiii
